@@ -74,8 +74,7 @@ def init():
     if debug:
         if not os.path.isdir(debugDir):
             os.mkdir(debugDir)
-    userArgs = userArgsHandling()
-    return fileList, userArgs
+    return fileList
 
 def readBytes(fileName, offset):
     with open(fileName, 'rb') as f:
@@ -306,13 +305,14 @@ def userArgsHandling():
 #              M    A    I    N
 # ++++++++++++++++++++++++++++++++++++++++++++
 intro()
-fileList, userArgs = init()
+fileList = init()
 filesTotal = str(len(fileList))
 nowTotal = time.time()
 
 
 for fileName in fileList:
-    print('\nprocessing: '+fileName)
+    print('\nprocessing: '+fileName+'\n')
+    userArgs = userArgsHandling()
     now = time.time()
     data = readBytes(fileName, offsetAudio)
 
